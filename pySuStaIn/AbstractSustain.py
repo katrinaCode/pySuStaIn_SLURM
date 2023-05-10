@@ -88,8 +88,12 @@ class AbstractSustain(ABC):
         self.N_startpoints              = N_startpoints
         self.N_S_max                    = N_S_max
         self.N_iterations_MCMC          = N_iterations_MCMC
-
-        self.num_cores                  = multiprocessing.cpu_count()
+        
+        # get number of cpus available to job
+        try:
+            self.num_cores              = int(os.environ["SLURM_JOB_CPUS_PER_NODE"])
+        except KeyError:
+            self.num_cores              = multiprocessing.cpu_count()
 
         self.output_folder              = output_folder
         self.dataset_name               = dataset_name
