@@ -94,9 +94,9 @@ class AbstractSustain(ABC):
             self.num_cores              = int(os.environ["SLURM_JOB_CPUS_PER_NODE"])
         except KeyError:
             self.num_cores              = multiprocessing.cpu_count()
-        print(f"# SLURM_JOB_CPUS_PER_NODE: {int(os.environ["SLURM_JOB_CPUS_PER_NODE"])}")
-        print(f"# cpu_count: {multiprocessing.cpu_count()}")
-        print(f"self.num_cores: {self.num_cores}")
+        print(f'# SLURM_JOB_CPUS_PER_NODE: {int(os.environ["SLURM_JOB_CPUS_PER_NODE"])}')
+        print(f'# cpu_count: {multiprocessing.cpu_count()}')
+        print(f'self.num_cores: {self.num_cores}')
         
         self.output_folder              = output_folder
         self.dataset_name               = dataset_name
